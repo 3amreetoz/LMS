@@ -25,5 +25,17 @@
 
     }
 }}
-<h1>hellow world</h1>
-<p>{{texttodisplay}}</p>
+<center>
+
+<h1>Notifications List</h1>
+</br>
+<ol>
+{{#notifi}}
+<li>
+{{notifitext}}
+</li>
+{{/notifi}}
+</ol>
+
+<input type='button' class='btn btn-primary' value='Create Notification' onclick='location.href="{{editurl}}"'>
+</center>

@@ -6,6 +6,8 @@
  * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+namespace local_notifi\form;
+use moodleform;
 
 //moodleform is defined in formslib.php
 require_once("$CFG->libdir/formslib.php");
@@ -16,15 +18,21 @@ class edit extends moodleform {
         global $CFG;
        
         $mform = $this->_form; // Don't forget the underscore! 
+   
+
+        $mform->addElement('hidden', 'id');
+        $mform->setType('id', PARAM_INT);
+
+        $mform->addElement('text', 'notifitext','notifitext'); // Add elements to your form.
+        $mform->setType('notifitext', PARAM_NOTAGS);                   // Set type of element.
+        $mform->setDefault('notifitext', 'pls enter notifitext');
+        
+        // Default value.
         $choices = array();
         $choices['0'] =\core\output\notification::NOTIFY_SUCCESS;
         $choices['1'] =\core\output\notification::NOTIFY_INFO;
         $choices['2'] =\core\output\notification::NOTIFY_ERROR;
         $choices['3'] =\core\output\notification::NOTIFY_WARNING;
-
-        $mform->addElement('text', 'notifitext','notifitext'); // Add elements to your form.
-        $mform->setType('notifitext', PARAM_NOTAGS);                   // Set type of element.
-        $mform->setDefault('notifitext', 'pls enter notifitext');        // Default value.
         $mform->addElement('select', 'notifitype','notifi type', $choices);
         $mform->setDefault('notifitype', '3'); 
 

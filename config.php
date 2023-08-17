@@ -21,6 +21,7 @@ $CFG->dboptions = array (
 $CFG->wwwroot   = 'http://localhost/57/lms';
 $CFG->dataroot  = 'C:\\wamp64\\moodledata';
 $CFG->admin     = 'admin';
+$CFG->dirroot = 'C:\wamp64\www\57\lms';
 
 
 $CFG->directorypermissions = 0777;

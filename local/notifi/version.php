@@ -27,3 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2023042400;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2023041800;        // Requires this Moodle version.
 $plugin->component = 'local_notifi';      // Full name of the plugin (used for diagnostics)
+
+$plugin->javascript = ['amd/src/confirm.js']; // Relative path to your main JavaScript file inside the "amd" folder.
+$plugin->javascript = ['amd/build/confirm.main.js']; // Relative path to your main CSS file inside the "amd" folder (if applicable).

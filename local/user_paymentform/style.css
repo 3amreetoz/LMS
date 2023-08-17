@@ -1,0 +1,68 @@
+/* Custom style for the Moodle form */
+.mform {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.mform label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.mform input[type="text"],
+.mform select {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+}
+
+.mform input[type="text"]::placeholder,
+.mform select::placeholder {
+    color: #999;
+}
+
+
+
+.mform input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mform input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+/* 
+Additional style for certificate name field
+.mform .certificatename-field {
+    position: relative;
+}
+
+.mform .certificatename-field input[type="text"] {
+    padding-right: 40px;
+}
+
+.mform .certificatename-field::before {
+    content: '\f007'; FontAwesome icon for certificate
+    font-family: FontAwesome;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #888;
+} */

@@ -12,9 +12,9 @@ require_once(__DIR__ . '/../../config.php');
 
 global $DB;
 
-require_login();
+// require_login();
 $context = context_system::instance();
-require_capability('local/notifi:managenotifis', $context);
+// require_capability('local/notifi:managenotifis', $context);
 
 $PAGE->set_url(new moodle_url('/local/notifi/manage.php'));
 $PAGE->set_context(\context_system::instance());

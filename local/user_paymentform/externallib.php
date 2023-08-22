@@ -1,5 +1,6 @@
 <?php
 
+use core\context\course;
 use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_single_structure;
@@ -24,9 +25,12 @@ class local_user_paymentform_external extends external_api
                     'phone' => new external_value(PARAM_RAW_TRIMMED, 'Phone'),
                     'country' => new external_value(PARAM_TEXT, 'Country'),
                     'certificatename' => new external_value(PARAM_TEXT, 'Certificate Name'),
+                    'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
+                    'cost' => new external_value(PARAM_TEXT, 'Cost'),
+                    'coursename' => new external_value(PARAM_TEXT, 'course name'),
                 )
             
-        );
+            );
     }
 
     /**
@@ -35,14 +39,14 @@ class local_user_paymentform_external extends external_api
      * @param array $data Array containing form data
      * @return mixed API response
      */
-    public static function send_data( $firstname,  $lastname,  $email,  $phone,  $country,  $certificatename)
+    public static function send_data( $firstname,  $lastname,  $email,  $phone,  $country,  $certificatename, $courseid, $cost, $coursename)
     {
         // $params = self::validate_parameters(
         //     self::send_data_parameters(),
         //     compact('firstname', 'lastname', 'email', 'phone', 'country', 'certificatename')
         // );     
 $receiverUrl = 'http://localhost/apitest/moodle/webservice/rest/server.php';
-$token = 'b3c257415918b7e3185556c5aa5a455a';
+$token = '42ecbfc1e39c659b4c7631847a1ceec5';
 $functionName = 'local_getpayment_save_data';
 
 $dataToSend = array(
@@ -56,7 +60,11 @@ $dataToSend = array(
     'phone' => $phone,
     'country' => $country,
     'certificatename' => $certificatename,
+    'courseid'=> $courseid,
+    'cost' => $cost,
+    'coursename' => $coursename
 );
+
 
 
 $client = new Client();

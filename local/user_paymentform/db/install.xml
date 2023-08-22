@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <XMLDB PATH="local/user_paymentform/db" VERSION="20130407" COMMENT="XMLDB file for local local_user_paymentform plugin"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
->
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
     <TABLES>
         <TABLE NAME="local_user_paymentform" COMMENT="each record is a local_user_paymentform">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <!-- <FIELD NAME="user_name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>                 -->
+                <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="cost" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="coursename" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="first_name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="last_name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="email" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="phone" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="country" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
-                 <FIELD NAME="certificate_name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="certificate_name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

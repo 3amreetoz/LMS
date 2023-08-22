@@ -26,7 +26,24 @@ class paymentform extends moodleform
         $mform->addElement('hidden', 'id');
         $mform->setType('id', PARAM_INT);
 
- 
+//         $courseid = $this->_customdata['courseid'];
+//         $cost = $this->_customdata['cost'];
+//         $coursename = $this->_customdata['coursename'];
+//   // Add uneditable fields for course ID, cost, and course name
+//   $mform->addElement('static', 'courseid', 'Course ID', $courseid);
+//   $mform->addElement('static', 'cost', 'Cost', $cost);
+//   $mform->addElement('static', 'coursename', 'Course Name', $coursename);
+$mform->addElement('hidden', 'courseid', $this->_customdata['courseid']);
+$mform->setType('courseid', PARAM_INT);
+
+$mform->addElement('hidden', 'cost', $this->_customdata['cost']);
+$mform->setType('cost', PARAM_TEXT);
+
+$mform->addElement('hidden', 'coursename', $this->_customdata['coursename']);
+$mform->setType('coursename', PARAM_TEXT);
+
+
+
         $mform->addElement('text', 'firstname', 'First Name');
         $mform->setType('firstname', PARAM_TEXT);
         $mform->addRule('firstname', 'Please enter First Name', 'required', null, 'client');
@@ -45,11 +62,12 @@ class paymentform extends moodleform
         $lastnameElement = $mform->getElement('lastname');
         $lastnameElement->updateAttributes(array('placeholder' => 'Please enter Last Name'));
 
-        // ... Repeat the above for other form elements (email and phone)
-        
-        // $mform->addElement('hidden', 'username');
-        // $mform->setType('username', PARAM_TEXT);
-        // $mform->addRule('username', null, 'client');
+        // $username = $mform->createElement('text', 'username', 'Username (non-editable)', array(
+        //     'value' => '{{firstname}}{{lastname}}',
+        //     'readonly' => 'readonly',
+        // ));
+
+        // $mform->addElement($username);
 
         $mform->addElement('text', 'email', 'Email');
         $mform->setType('email', PARAM_EMAIL);
@@ -338,37 +356,82 @@ class paymentform extends moodleform
 
         $certificateName = $mform->getElement('certificatename');
         $certificateName->updateAttributes(array('placeholder' => 'Please enter certificate name'));
+
+        // $mform->addElement('text', 'educationbackground', 'Education Background'); // Add elements to your form.
+        // $mform->setType('educationbackground', PARAM_NOTAGS);                   // Set type of element.
+        // $mform->addRule('educationbackground', 'Please enter educationbackground ', 'required', null, 'client');
+        // $mform->addRule('educationbackground', 'educationbackground name must be between 2 and 50 characters', 'minlength', 2, 'client');
+        // $mform->addRule('educationbackground', 'educationbackground name must be between 2 and 50 characters', 'maxlength', 50, 'client');
+
+        // $educationbackground = $mform->getElement('educationbackground');
+        // $educationbackground->updateAttributes(array('placeholder' => 'Please enter educationbackground name'));
+
+        // $LastDegreeachieved = array(
+        //     '0' => 'Degree',
+        //     '00' => 'Student',
+        //     '01' => 'B.Sc.',
+        //     '02' => 'M.Sc',
+        //     '03' => 'PHD'
+        // );
+        // $mform->addElement('select', 'lastdegreeachieved', 'Last Degree achieved', $LastDegreeachieved);
+        // $mform->addRule('lastdegreeachieved', 'Please select a lastdegreeachieved', 'required', null, 'client');
+        // $mform->setDefault('0', ''); // Set the default selected value if needed
+
+
+
+        // $mform->addElement('textarea', 'leavemessage', 'Leave message', array(
+        //     'cols' => 30,
+        //     'rows' => 5,
+        //     // 'class' => 'bigtext',
+        // ));
+
+        // $leavemessage = $mform->getElement('leavemessage');
+        // $leavemessage->updateAttributes(array('placeholder' => 'Leave message if needed'));
+
+        // $mform->addElement('checkbox', 'refundpolicy', '<p>I accept the refund policy</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+        // <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        //   <div class="modal-dialog modal-lg">
+        //     <div class="modal-content">
+              
+        //     </div>
+        //   </div>
+        // </div>');
+        // $mform->addRule('refundpolicy', 'You have to accept the refund policy', 'required', null, 'client');
+
+
+
         $this->add_action_buttons();
     }
     // in case we want to create a generated username
     // Custom validation should be added here
-//     function validation($data, $files)
-//     {
-//         global $DB;
+    //     function validation($data, $files)
+    //     {
+    //         global $DB;
 
-//         $errors = parent::validation($data, $files);
-// // Generate a username from first and last names
-// $generatedUsername = strtolower(substr($data['firstname'], 0, 1) . $data['lastname']);
-
-
-// // Check for uniqueness of the generated username
-// $counter = 1;
-// $originalUsername = $generatedUsername;
-// while ($DB->record_exists_select('local_user_paymentform', "user_name = :username", ['username' => $generatedUsername])) {
-//     $generatedUsername = $originalUsername . $counter;
-//     $counter++;
-// }
-
-// // Set the generated username
-// $data['username'] = $generatedUsername;
+    //         $errors = parent::validation($data, $files);
+    // // Generate a username from first and last names
+    // $generatedUsername = strtolower(substr($data['firstname'], 0, 1) . $data['lastname']);
 
 
-    
-//         return $errors;
-    
-//     }
-function validation($data, $files) {
+    // // Check for uniqueness of the generated username
+    // $counter = 1;
+    // $originalUsername = $generatedUsername;
+    // while ($DB->record_exists_select('local_user_paymentform', "user_name = :username", ['username' => $generatedUsername])) {
+    //     $generatedUsername = $originalUsername . $counter;
+    //     $counter++;
+    // }
 
-    return array();
-}
+    // // Set the generated username
+    // $data['username'] = $generatedUsername;
+
+
+
+    //         return $errors;
+
+    //     }
+    function validation($data, $files)
+    {
+
+        return array();
+    }
 }

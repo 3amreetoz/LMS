@@ -51,30 +51,12 @@
         <div class="mdl-align">
             <p>{{# str }} paymentrequired {{/ str}}</p>
             <p><b>{{cost}}</b></p>
-            <p><a href="{{config.wwwroot}}/login/">{{# str }} loginsite {{/ str }}</a></p>
+    <button class="btn btn-primary" onclick="location.href='{{config.wwwroot}}/local/user_paymentform/paymentform.php?courseid={{instanceid}}&cost={{cost}}&coursename={{description}}';">{{# str }} payforcourse {{/ str }}</button>
         </div>
     {{/isguestuser}}
     {{^isguestuser}}
         <p>{{# str }} paymentrequired {{/ str}}</p>
         <p><b>{{cost}}</b></p>
-        <button
-            class="btn btn-secondary"
-            type="button"
-            id="gateways-modal-trigger-{{ uniqid }}"
-            data-action="core_payment/triggerPayment"
-            data-component="enrol_fee"
-            data-paymentarea="fee"
-            data-itemid="{{instanceid}}"
-            data-cost="{{cost}}"
-            data-successurl="{{successurl}}"
-            data-description="{{description}}"
-        >
-            {{# str }} sendpaymentbutton, enrol_fee {{/ str }}
-        </button>
+    <button class="btn btn-primary" onclick="location.href='{{config.wwwroot}}/local/user_paymentform/paymentform.php?courseid={{instanceid}}&cost={{cost}}&coursename={{description}}';">{{# str }} payforcourse {{/ str }}</button>
     {{/isguestuser}}
 </div>
-{{#js}}
-    require(['core_payment/gateways_modal'], function(modal) {
-        modal.init();
-    });
-{{/js}}

@@ -34,6 +34,7 @@
 
 
 .mform input[type="submit"] {
+    
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -46,6 +47,21 @@
 .mform input[type="submit"]:hover {
     background-color: #0056b3;
 }
+.bigtext {
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  .mform input[type="select"] {
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid red;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+
 /* 
 Additional style for certificate name field
 .mform .certificatename-field {

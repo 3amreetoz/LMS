@@ -182,3 +182,4 @@ $string['YER'] = 'Yemeni Rial';
 $string['ZAR'] = 'South African Rand';
 $string['ZMW'] = 'Zambian Kwacha';
 $string['ZWL'] = 'Zimbabwe Dollar';
+$string['EGP'] = 'Egyption Pound';

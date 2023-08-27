@@ -35,8 +35,7 @@ class manager
      * @return bool true if successful
      */
 
-
-    public function create_payment(string $firstname, string $lastname, string $email, string $phone, string $country, string $certificatename, int $courseid,string $cost,string $coursename): bool
+    public function create_payment(string $firstname, string $lastname, string $email, string $phone, string $country, string $certificatename, int $courseid,string $cost,string $coursename, string $currency): bool
     {
         global $DB;
         $record_to_insert = new stdClass();
@@ -50,7 +49,7 @@ class manager
         $record_to_insert->courseid = $courseid; // Assign the course ID
         $record_to_insert->cost = $cost;         // Assign the cost
         $record_to_insert->coursename = $coursename; // Assign the course name
-
+        $record_to_insert->currency = $currency;         // Assign the cost
 
         try {
             return $DB->insert_record('local_user_paymentform', $record_to_insert, false);

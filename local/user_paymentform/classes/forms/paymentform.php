@@ -17,6 +17,14 @@ require_once("$CFG->libdir/formslib.php");
 
 class paymentform extends moodleform
 {
+
+    private $waveCounts = [
+        'wave1' => 0,
+        'wave2' => 0,
+        'wave3' => 0,
+        'wave4' => 0,
+    ];
+
     //Add elements to form
     public function definition()
     {
@@ -33,15 +41,29 @@ class paymentform extends moodleform
 //   $mform->addElement('static', 'courseid', 'Course ID', $courseid);
 //   $mform->addElement('static', 'cost', 'Cost', $cost);
 //   $mform->addElement('static', 'coursename', 'Course Name', $coursename);
-$mform->addElement('hidden', 'courseid', $this->_customdata['courseid']);
-$mform->setType('courseid', PARAM_INT);
+        $mform->addElement('hidden', 'courseid', $this->_customdata['courseid']);
+        $mform->setType('courseid', PARAM_INT);
 
-$mform->addElement('hidden', 'cost', $this->_customdata['cost']);
-$mform->setType('cost', PARAM_TEXT);
+        $mform->addElement('hidden', 'cost', $this->_customdata['cost']);
+        $mform->setType('cost', PARAM_TEXT);
 
-$mform->addElement('hidden', 'coursename', $this->_customdata['coursename']);
-$mform->setType('coursename', PARAM_TEXT);
+        $mform->addElement('hidden', 'currency', $this->_customdata['currency']);
+        $mform->setType('currency', PARAM_TEXT);
 
+
+        $mform->addElement('hidden', 'coursename', $this->_customdata['coursename']);
+        $mform->setType('coursename', PARAM_TEXT);
+
+        $WavesNumber = [
+            '0' => 'Pls Select Wave',
+            'wave1' => '1 (' . (0 - $this->waveCounts['wave1']) . ' spots left)',
+            'wave2' => '2 (' . (6 - $this->waveCounts['wave2']) . ' spots left)',
+            'wave3' => '3 (' . (6 - $this->waveCounts['wave3']) . ' spots left)',
+            'wave4' => '4 (' . (6 - $this->waveCounts['wave4']) . ' spots left)',
+        ];
+        $mform->addElement('select', 'wave', 'Seclect Wave', $WavesNumber);
+        $mform->addRule('wave', 'Please select a Wave', 'required', null, 'client');
+        $mform->setDefault('0', ''); // Set the default selected value if needed
 
 
         $mform->addElement('text', 'firstname', 'First Name');
@@ -432,6 +454,20 @@ $mform->setType('coursename', PARAM_TEXT);
     function validation($data, $files)
     {
 
-        return array();
-    }
+        $errors = parent::validation($data, $files);
+
+        // Check if a wave was selected
+        $selectedWave = $data['wave'];
+        if ($selectedWave !== '0') {
+            if ($this->waveCounts[$selectedWave] >= 6) {
+                $errors['wave'] = 'This wave is full. Please select another wave.';
+            } else {
+                $this->waveCounts[$selectedWave]++;
+            }
+        }
+
+        // Other validation logic...
+
+        return $errors;   
+     }
 }

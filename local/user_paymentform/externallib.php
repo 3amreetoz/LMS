@@ -28,6 +28,8 @@ class local_user_paymentform_external extends external_api
                     'courseid' => new external_value(PARAM_TEXT, 'Course Id'),
                     'cost' => new external_value(PARAM_TEXT, 'Cost'),
                     'coursename' => new external_value(PARAM_TEXT, 'course name'),
+                    'currency' => new external_value(PARAM_TEXT, 'currency'),
+
                 )
             
             );
@@ -39,14 +41,14 @@ class local_user_paymentform_external extends external_api
      * @param array $data Array containing form data
      * @return mixed API response
      */
-    public static function send_data( $firstname,  $lastname,  $email,  $phone,  $country,  $certificatename, $courseid, $cost, $coursename)
+    public static function send_data( $firstname,  $lastname,  $email,  $phone,  $country,  $certificatename, $courseid, $cost, $coursename, $currency)
     {
         // $params = self::validate_parameters(
         //     self::send_data_parameters(),
         //     compact('firstname', 'lastname', 'email', 'phone', 'country', 'certificatename')
         // );     
 $receiverUrl = 'http://localhost/apitest/moodle/webservice/rest/server.php';
-$token = '42ecbfc1e39c659b4c7631847a1ceec5';
+$token = 'a0c316265510522db94baac21aa51dbf';
 $functionName = 'local_getpayment_save_data';
 
 $dataToSend = array(
@@ -62,10 +64,9 @@ $dataToSend = array(
     'certificatename' => $certificatename,
     'courseid'=> $courseid,
     'cost' => $cost,
-    'coursename' => $coursename
+    'coursename' => $coursename,
+    'currency' => $currency,
 );
-
-
 
 $client = new Client();
 

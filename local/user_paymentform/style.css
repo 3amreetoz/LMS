@@ -14,8 +14,7 @@
     font-weight: bold;
 }
 
-.mform input[type="text"],
-.mform select {
+.mform input[type="text"]{
     width: 100%;
     height: auto;
     padding: 10px;
@@ -31,10 +30,7 @@
     color: #999;
 }
 
-
-
 .mform input[type="submit"] {
-    
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -47,38 +43,11 @@
 .mform input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
 .bigtext {
     font-size: 18px;
     padding: 10px;
-  }
-  
-  .mform input[type="select"] {
-    width: 100%;
-    padding: 6px 12px;
-    border: 1px solid red;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  
-
-/* 
-Additional style for certificate name field
-.mform .certificatename-field {
-    position: relative;
 }
 
-.mform .certificatename-field input[type="text"] {
-    padding-right: 40px;
-}
+/* Updated style for select element */
 
-.mform .certificatename-field::before {
-    content: '\f007'; FontAwesome icon for certificate
-    font-family: FontAwesome;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #888;
-} */

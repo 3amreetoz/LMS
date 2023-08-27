@@ -51,12 +51,12 @@
         <div class="mdl-align">
             <p>{{# str }} paymentrequired {{/ str}}</p>
             <p><b>{{cost}}</b></p>
-    <button class="btn btn-primary" onclick="location.href='{{config.wwwroot}}/local/user_paymentform/paymentform.php?courseid={{instanceid}}&cost={{cost}}&coursename={{description}}';">{{# str }} payforcourse {{/ str }}</button>
+    <button class="btn btn-primary" onclick="location.href='{{config.wwwroot}}/local/user_paymentform/paymentform.php?courseid={{instanceid}}&cost={{cost}}&coursename={{coursename}}';">{{# str }} payforcourse {{/ str }}</button>
         </div>
     {{/isguestuser}}
     {{^isguestuser}}
         <p>{{# str }} paymentrequired {{/ str}}</p>
         <p><b>{{cost}}</b></p>
-    <button class="btn btn-primary" onclick="location.href='{{config.wwwroot}}/local/user_paymentform/paymentform.php?courseid={{instanceid}}&cost={{cost}}&coursename={{description}}';">{{# str }} payforcourse {{/ str }}</button>
+    <button class="btn btn-primary" onclick="location.href='{{config.wwwroot}}/local/user_paymentform/paymentform.php?courseid={{instanceid}}&cost={{cost}}&coursename={{coursename}}';">{{# str }} payforcourse {{/ str }}</button>
     {{/isguestuser}}
 </div>

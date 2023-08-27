@@ -15,15 +15,22 @@ $PAGE->set_heading('Payment Form');
 $PAGE->requires->css('/local/user_paymentform/style.css');
 
 $courseid = required_param('courseid', PARAM_INT);
-$cost = required_param('cost', PARAM_TEXT);
+$costandc = required_param('cost', PARAM_TEXT);
 $coursename = required_param('coursename', PARAM_TEXT);
+
+$cost = preg_replace('/[^0-9.]/', '', $costandc);
+$currency = preg_replace('/[^a-zA-Z]/', '', $costandc);
 
 
 $paramspind=[
     'courseid' => $courseid,
     'cost' => $cost,
     'coursename' => $coursename,
+    'currency' => $currency,
 ];
+
+// var_dump($paramspind);
+// die();
 
 $mform = new paymentform(null,$paramspind);
 if ($mform->is_cancelled()) {
@@ -31,7 +38,7 @@ if ($mform->is_cancelled()) {
 } elseif ($fromform = $mform->get_data()) {
 
     $manager = new manager();
-    $manager->create_payment(
+  $create = $manager->create_payment(
         $fromform->firstname,
         $fromform->lastname,
         $fromform->email,
@@ -40,7 +47,9 @@ if ($mform->is_cancelled()) {
         $fromform->certificatename,
         $fromform->courseid,
         $fromform->cost,
-        $fromform->coursename
+        $fromform->coursename,
+        $fromform->currency,
+
     );
     // Send data to the receiving Moodle instance using the API
     $response = local_user_paymentform_external::send_data(
@@ -53,7 +62,8 @@ if ($mform->is_cancelled()) {
         $fromform->certificatename,
         $fromform->courseid,
         $fromform->cost,
-        $fromform->coursename
+        $fromform->coursename,
+        $fromform->currency,
     );
 }
 
